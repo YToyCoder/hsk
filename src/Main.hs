@@ -1,5 +1,8 @@
 module Main where
 
 import LiterateTest (add)
+import Text.Printf (printf)
 
-main = print "Hello"
+main =
+  printf "Hello %d\n"  i where 
+    i = add 3 4
