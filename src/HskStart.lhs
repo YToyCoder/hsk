@@ -11,3 +11,11 @@
 
 > curriedFn :: Int -> Int -> Int
 > curriedFn a b = a - b
+
+Haskell 还有另外一种书写函数的格式,与函数的类型相互对应,这就是 λ 表达式
+函数类型 :: 参数 1 的类型-> 参数 2 的类型-> ... 结果的类型
+函数名 = \参数 1 -> \参数 2 -> ... -> 函数体
+
+> lambda = (\x -> \y -> x y) abs (-5)
+> simplifyLambda = (\x y -> x y) abs (-8)
+
