@@ -201,3 +201,28 @@ import XXX hiding (e) // hiding 关键字将它们的定义隐藏
 
 -- 可以使用 qualified 关键字来对不同的模块命名
 -- import qualified Test as T
+
+{- bubble sort -}
+-- swap
+swap :: Ord a => [a] -> [a]
+swap [] = []
+swap [x] = [x]
+swap (x1:x2:rest) 
+  | x1 > x2 = x2 : swap (x1 : rest)
+  | otherwise = x1 : swap (x2 : rest)
+
+bsOne :: Ord a => [a] -> [a]
+bsOne xs  | swap xs == xs = xs
+          | otherwise = bsOne $ swap xs
+
+bsTwo :: Ord a => [a] -> [a]
+bsTwo [] = []
+bsTwo xs = bsTwo initialElems ++ [lastElem]
+  where swappedxs = swap xs
+        initialElems = init swappedxs
+        lastElem = last swappedxs
+
+bs :: Ord a => [a] -> [a]
+bs xs = 
+  if swappedxs == xs then xs else bs swappedxs 
+  where swappedxs = swap xs
