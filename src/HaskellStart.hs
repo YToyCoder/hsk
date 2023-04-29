@@ -252,3 +252,23 @@ h x = f (fx x)
 h' = f.fx
 -- >>
 h'' = fx >> f
+
+{- data type -}
+-- Haskell 主要使用 data 与 newtype 关键字来定义新的类型。
+
+-- enum type : 枚举类型
+-- 这与 C 语言和 Java 语言中用 enum 定义类型十分相似
+data Color = Red | Black | White
+
+-- 构造类型
+data Book = Book !String !String !Int deriving (Eq, Show)
+data Bk = 
+  Bk { 
+    name:: !String, 
+    author :: !String, 
+    price :: !Int
+  } deriving (Eq, Show)
+
+-- 参数化类型
+data Animal food = Animal food   
+
