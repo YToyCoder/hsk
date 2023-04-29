@@ -9,7 +9,7 @@ import Test.HUnit
       Test(TestCase),
       Testable(test) )
 import LiterateTest ( add )
-import HaskellStart (curriedFn, uncurriedFn, bsOne, bsTwo, bs)
+import HaskellStart (curriedFn, uncurriedFn, bsOne, bsTwo, bs, map')
 import Data.List (sort)
 
 testAdd :: Test
@@ -24,9 +24,11 @@ testBsOne :: Test
 testBsOne = TestCase (assertEqual "bsone" sortedls (bsOne ls))
 testBsTwo = TestCase (assertEqual "bsone" sortedls (bsTwo ls))
 testBs = TestCase (assertEqual "bsone" sortedls (bs ls))
+mapFn a = a + 1
+testMap = TestCase (assertEqual "map" (map' mapFn ls) (map mapFn ls) )
 main :: IO b
 main = do 
-  a <- runTestTT (test [testAdd, testUncurry, testCurry, testBsOne, testBsTwo, testBs]) 
+  a <- runTestTT (test [testAdd, testUncurry, testCurry, testBsOne, testBsTwo, testBs, testMap]) 
   if errors a + failures a == 0
     then exitSuccess
     else exitFailure

@@ -226,3 +226,15 @@ bs :: Ord a => [a] -> [a]
 bs xs = 
   if swappedxs == xs then xs else bs swappedxs 
   where swappedxs = swap xs
+
+{- 列表内包 -}
+
+-- 列表生成器
+lg = [x ^ 2| x <- [1..10]]
+
+map' f xs = [f x | x <- xs]
+
+-- list filter
+fliter' f xs = [x | x <- xs,even x, f x]
+
+length' xs = sum [1 :: Int | x <- xs]
