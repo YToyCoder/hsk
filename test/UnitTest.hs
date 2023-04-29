@@ -9,7 +9,7 @@ import Test.HUnit
       Test(TestCase),
       Testable(test) )
 import LiterateTest ( add )
-import HskStart ( curriedFn, uncurriedFn )
+import HaskellStart ( curriedFn, uncurriedFn )
 
 testAdd :: Test
 testAdd = TestCase (assertEqual "for add 2 3" 5 (add 2 3))

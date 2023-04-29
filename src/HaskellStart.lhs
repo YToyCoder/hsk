@@ -1,4 +1,4 @@
-> module HskStart where
+> module HaskellStart where
 
 非柯里化函数(uncurried function)是一种函数类型。
 当函数有多个参数时,必须通过元组一次性传入,然后返回结果,这样的函数就是非柯里化的函数。
