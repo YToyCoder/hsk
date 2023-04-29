@@ -1,4 +1,5 @@
 {-#LANGUAGE BinaryLiterals #-}
+{-#LANGUAGE ParallelListComp#-}
 module HaskellStart where
 import qualified Data.Word as Data-- Haskell常用类型
 import Data.Complex ( Complex )
@@ -238,3 +239,5 @@ map' f xs = [f x | x <- xs]
 fliter' f xs = [x | x <- xs,even x, f x]
 
 length' xs = sum [1 :: Int | x <- xs]
+-- 通过添加扩展ParallelListComp
+zip' xs1 xs2 = [(x, y) | x <- xs1 | y <- xs2] 
