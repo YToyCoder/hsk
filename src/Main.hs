@@ -18,6 +18,12 @@ search a xs | m < a = search a behind
             | otherwise = True
       where (front, m : behind) = splitAt (length xs `div` 2) xs
 
+-- insert sort 
+insert :: Ord a => a -> [a] -> [a]
+insert x [] = [x]
+insert x (y:ys)   | x < y = x : y : ys
+                  | otherwise = y : insert  x ys
+
 main =
   mapM_ print (search 50 [1 .. 100] : cmp_result)
     where
