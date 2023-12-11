@@ -4,32 +4,36 @@ import LiterateTest (add)
 import Text.Printf (printf)
 
 {- McCarthy 91 function -}
-mc n  | n > 100 = n - 10
-      | otherwise = mc (mc (n + 11))
+mc n  
+  | n > 100 = n - 10
+  | otherwise = mc (mc (n + 11))
 
-mc' n | n > 100 = n - 10
-      | otherwise = 91
+mc' n 
+  | n > 100 = n - 10
+  | otherwise = 91
 
 -- Binary Search
 search :: (Ord a) => a -> [a] -> Bool
 search a [] = False
-search a xs | m < a = search a behind
-            | m > a = search a front
-            | otherwise = True
-      where (front, m : behind) = splitAt (length xs `div` 2) xs
+search a xs 
+  | m < a = search a behind
+  | m > a = search a front
+  | otherwise = True
+    where (front, m : behind) = splitAt (length xs `div` 2) xs
 
 -- insert sort 
 insert :: Ord a => a -> [a] -> [a]
 insert x [] = [x]
-insert x (y:ys)   | x < y = x : y : ys
-                  | otherwise = y : insert  x ys
+insert x (y:ys)   
+  | x < y = x : y : ys
+  | otherwise = y : insert  x ys
 
 partitionEithers :: [Either a b] -> ([a], [b])
 partitionEithers =
   foldr (either left right ) ([], [])
-      where 
-        left a (l, r) = (a : l, r)
-        right a (l, r) = (l, a : r)
+    where 
+      left a (l, r) = (a : l, r)
+      right a (l, r) = (l, a : r)
 
 main =
   mapM_ print (search 50 [1 .. 100] : cmp_result)
