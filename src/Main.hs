@@ -24,6 +24,13 @@ insert x [] = [x]
 insert x (y:ys)   | x < y = x : y : ys
                   | otherwise = y : insert  x ys
 
+partitionEithers :: [Either a b] -> ([a], [b])
+partitionEithers =
+  foldr (either left right ) ([], [])
+      where 
+        left a (l, r) = (a : l, r)
+        right a (l, r) = (l, a : r)
+
 main =
   mapM_ print (search 50 [1 .. 100] : cmp_result)
     where
